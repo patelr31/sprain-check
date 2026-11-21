@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprain or Fracture?</title>
+<meta name="description" content="A guided self-check for ankle, foot and knee injuries using the Ottawa Rules that emergency doctors use to decide who needs an X-ray. Warning signs first, then a clear next step.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="wrap">
+  <p class="eyebrow">Ankle, foot or knee injury</p>
+  <h1>Sprain or fracture?</h1>
+  <p class="lede">Most twisted ankles and knees are sprains, but telling them apart usually means a costly hospital visit. Emergency doctors use the <b>Ottawa Rules</b> to decide who actually needs an X-ray. This walks you through the same questions.</p>
+  <p class="edu">A guide, not a diagnosis. The rules were built for a clinician's exam; if you're unsure at any step, get checked. Nothing you enter is stored.</p>
+</header>
+<main class="wrap">
+  <section class="card">
+    <h2>Which part is hurt?</h2>
+    <div id="parts" class="parts"><button type="button" data-part="ankle">Ankle or foot</button><button type="button" data-part="knee">Knee</button></div>
+  </section>
+  <div id="steps" hidden>
+    <section class="card danger">
+      <h2>1. Any of these? Tick all that apply</h2>
+      <div id="red"></div>
+    </section>
+    <section class="card">
+      <h2>2. Does any of this describe you?</h2>
+      <div id="notfor"></div>
+    </section>
+    <section class="card" id="rule-block">
+      <h2>3. The Ottawa questions</h2>
+      <div class="rule-grid"><div id="rule-q"></div><figure id="diagram" class="diagram"></figure></div>
+      <p class="hint">"Tender" means it hurts when you press firmly on the bone itself, not just soreness in the soft tissue around it.</p>
+    </section>
+    <section id="result" class="result" hidden aria-live="polite"></section>
+    <p><button id="reset" class="ghost" type="button">Start over</button></p>
+  </div>
+  <section class="card about">
+    <h2>About the Ottawa Rules</h2>
+    <p>Developed by Dr Ian Stiell and colleagues in Ottawa (ankle and foot rules 1992–93, knee rule 1995–96) to cut unnecessary X-rays. In pooled studies they catch about <b>98%</b> of fractures:
+      ankle and midfoot 97.6% (<a href="https://pubmed.ncbi.nlm.nih.gov/12595378/" target="_blank" rel="noopener">Bachmann et al., BMJ 2003</a>), knee 98.5% (<a href="https://pubmed.ncbi.nlm.nih.gov/14734335/" target="_blank" rel="noopener">Bachmann et al., Ann Intern Med 2004</a>).
+      They are deliberately cautious: many people they send for an X-ray turn out to have a sprain.</p>
+  </section>
+</main>
+<footer class="wrap">Built by a physician (MBBS) as an educational prototype for Razorpay's Fix My Itch problem "Why is distinguishing sprains from fractures impossible without costly hospital visits?". Not medical advice; in an emergency call your local emergency number.</footer>
+<script src="rules.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
