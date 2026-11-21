@@ -8,7 +8,7 @@ function yn(id, text, point) {
   const v = state.ans[id];
   return `<div class="q" data-q="${id}">
     <p>${point ? `<span class="pt">${point}</span>` : ""}${esc(text)}</p>
-    <div class="yn"><button type="button" class="${v === true ? "on yes" : ""}" data-a="yes">Yes</button><button type="button" class="${v === false ? "on no" : ""}" data-a="no">No</button></div>
+    <div class="yn"><button type="button" class="${v === true ? "on yes" : ""}" aria-pressed="${v === true}" data-a="yes">Yes</button><button type="button" class="${v === false ? "on no" : ""}" aria-pressed="${v === false}" data-a="no">No</button></div>
   </div>`;
 }
 
@@ -77,22 +77,22 @@ const ANKLE_SVG = `<svg viewBox="0 0 320 150" role="img" aria-label="Where to pr
   <path class="leg" d="M40 20 h34 v62 q4 14 30 22 l48 10 q10 4 6 14 h-120 q-8 -40 2 -108z"/>
   <circle class="bone" cx="62" cy="86" r="9"/><rect class="zone" x="54" y="50" width="16" height="40" rx="4"/>
   <circle class="pt" cx="62" cy="92" r="9"/><text x="62" y="96" class="ptl">A</text>
-  <circle class="pt" cx="118" cy="114" r="9"/><text x="118" y="118" class="ptl">C</text>
-  <path class="leg" d="M246 20 h34 v62 q-4 14 -30 22 l-48 10 q-10 4 -6 14 h120 q8 -40 -2 -108z"/>
-  <rect class="zone" x="250" y="50" width="16" height="40" rx="4"/>
+  <circle class="pt" cx="120" cy="119" r="9"/><text x="120" y="123" class="ptl">C</text>
+  <path class="leg" transform="translate(320 0) scale(-1 1)" d="M40 20 h34 v62 q4 14 30 22 l48 10 q10 4 6 14 h-120 q-8 -40 2 -108z"/>
+  <circle class="bone" cx="258" cy="86" r="9"/><rect class="zone" x="250" y="50" width="16" height="40" rx="4"/>
   <circle class="pt" cx="258" cy="92" r="9"/><text x="258" y="96" class="ptl">B</text>
   <circle class="pt" cx="214" cy="104" r="9"/><text x="214" y="108" class="ptl">D</text>
   <text x="160" y="145" class="cap">Shaded: lowest 6 cm of the ankle bones (back edge and tip)</text></svg>`;
 const KNEE_SVG = `<svg viewBox="0 0 220 170" role="img" aria-label="Where to press on the knee">
-  <text x="110" y="14" class="lbl">Front of the right knee</text>
-  <path class="leg" d="M70 20 h80 v60 q6 20 -6 34 v50 h-68 v-50 q-12 -14 -6 -34z"/>
+  <text x="110" y="14" class="lbl">Your right knee, looking down at it</text>
+  <path class="leg" d="M70 20 h80 v60 q6 20 -6 34 v32 h-68 v-32 q-12 -14 -6 -34z"/>
   <ellipse class="bone" cx="110" cy="84" rx="18" ry="22"/>
   <circle class="pt" cx="110" cy="84" r="9"/><text x="110" y="88" class="ptl">P</text>
   <circle class="pt" cx="150" cy="124" r="9"/><text x="150" y="128" class="ptl">F</text>
   <text x="110" y="165" class="cap">P: kneecap · F: head of the fibula (outer side)</text></svg>`;
 
 function init() {
-  $("#parts").onclick = (e) => { const b = e.target.closest("[data-part]"); if (!b) return; state.part = b.dataset.part; state.ans = {}; render(); };
+  $("#parts").onclick = (e) => { const b = e.target.closest("[data-part]"); if (!b) return; state.part = b.dataset.part; state.ans = {}; state.notFor.clear(); render(); };
   document.body.addEventListener("click", (e) => {
     const b = e.target.closest("[data-a]"); if (!b) return;
     const id = b.closest("[data-q]").dataset.q;
