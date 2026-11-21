@@ -1,6 +1,6 @@
 # Sprain or Fracture?
 
-**Live: https://sprain-check.vercel.app**
+**Live: https://patelr31.github.io/sprain-check/** (GitHub Pages)
 
 A guided self-check for ankle, foot and knee injuries. It uses the **Ottawa Rules**, the
 decision rules emergency doctors use to decide who actually needs an X-ray.
